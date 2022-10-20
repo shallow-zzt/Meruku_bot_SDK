@@ -9,5 +9,7 @@
 
 # 开发说明
 可在plugins文件夹下放置相应插件的py文件
+
 文件夹名和运行主函数的文件名须一致
+
 格式和用法详见plugins/sample/sample.py
