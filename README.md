@@ -1,2 +1,2 @@
 # Meruku_bot_SDK
-一个基于gocqhttp的bot python开发框架
+一个基于gocqhttp的正向websocket通信的bot python开发框架
