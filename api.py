@@ -197,8 +197,8 @@ def get_center_text(raw_text,left,right,num = 1):
 #读配置    
 def read_config(path,key1,key2,default = 0):
     configs = configparser.ConfigParser()
-    configs.read(path)
     try:
+        configs.read(path)
         result=configs.get(key1,key2)
     except:
         result=default
