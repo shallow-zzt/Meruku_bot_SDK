@@ -77,4 +77,5 @@ def process_main():
  
  
 if __name__ == '__main__':
+    os.popen('python -m http.server 9999')
     process_main()
