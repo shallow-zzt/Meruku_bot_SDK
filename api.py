@@ -155,8 +155,12 @@ def post(data, url = platform.http_url):
 ###############################################
 
 #图片cq码
+#支持本地文件和url发送
 def cq_pic(file):
-    return '[CQ:image,file=' + file + ']'
+    if 'http://' in file or 'https://' in file:
+        return '[CQ:image,file=' + file + ']'
+    else:
+        return '[CQ:image,file=http://127.0.0.1:9999/' + file + ']'
 
 #语音
 def cq_voice(file):
