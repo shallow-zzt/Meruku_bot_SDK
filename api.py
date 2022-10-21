@@ -172,8 +172,8 @@ def cq_at(qq):
     return '[CQ:at,qq=' + qq + ']'
 
 #回复指定消息
-def cq_reply(msg_id):
-    msg_id=str(msg_id)
+def cq_reply(data):
+    msg_id=str(data['message_id'])
     return '[CQ:reply,id=' + msg_id + ']'
 
 #下载图片到指定目录
