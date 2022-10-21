@@ -82,7 +82,7 @@ def config_init():
         config.set("QQ_config", "ws_uri", "ws://127.0.0.1:5700")
         config.set("QQ_config", "http_url", "http://127.0.0.1:5701/")
         #写入配置文件
-        f = open('./config.ini', 'w')
+        f = open('./config.ini', 'a')
         config.write(f)
         f.close()
 
