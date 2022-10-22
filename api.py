@@ -155,12 +155,37 @@ def post(data, url = platform.http_url):
 ###############################################
 
 #图片cq码
-#支持本地文件和url发送
-def cq_pic(file):
+#支持本地文件(动态和静态)和url发送
+def cq_pic(file,statical=True):
     if 'http://' in file or 'https://' in file:
         return '[CQ:image,file=' + file + ']'
     else:
-        return '[CQ:image,file=http://127.0.0.1:9999/' + file + ']'
+        if statical:
+            return '[CQ:image,file=http://0.0.0.0:9999/' + file + ']'
+        else:
+            try:
+                os.mkdir('cache')
+            except:
+                pass
+            seed_path='cache/'+str(random.random()*100000000000)+'.png'
+            shutil.copy(file,seed_path)
+            return '[CQ:image,file=http://0.0.0.0:9999/' + seed_path + ']'
+#清理动态缓存
+def clear_cache(Dir='cache'):
+    if os.path.isdir( Dir ):
+        paths = os.listdir( Dir )
+        for path in paths:
+            filePath = os.path.join( Dir, path )
+            if os.path.isfile( filePath ):
+                try:
+                    os.remove( filePath )
+                except os.error:
+                    autoRun.exception( "remove %s error." %filePath )#引入logging
+            elif os.path.isdir( filePath ):
+                if filePath[-4:].lower() == ".svn".lower():
+                    continue
+                shutil.rmtree(filePath,True)
+    return
 
 #语音
 def cq_voice(file):
