@@ -207,6 +207,10 @@ def read_config(path,key1,key2,default = 0):
 #写配置
 def write_config(path,key1,key2,value):
     configs = configparser.ConfigParser()
+    try:
+        configs.read(path)
+    except:
+        pass
     configs.add_section(key1)
     configs.set(key1, key2, value)
     f = open(path, 'w')
