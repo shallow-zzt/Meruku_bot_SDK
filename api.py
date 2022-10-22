@@ -754,13 +754,13 @@ class MsgUser:
         return msg_id
     #快捷获取qq号，群号，昵称
     #非群聊群号返回O
-    def qq(self):
+    def get_qq(self):
         return self.qq
-    def group(self):
+    def get_group(self):
         return self.group
     def msg_id(self):
         return self.msgid        
-    def name(self):
+    def user_name(self):
         if self.name:
             self.name = get_name(self.qq, self.group)
         return self.name
