@@ -211,7 +211,10 @@ def write_config(path,key1,key2,value):
         configs.read(path)
     except:
         pass
-    configs.add_section(key1)
+    try:
+        configs.add_section(key1)
+    except:
+        pass
     configs.set(key1, key2, value)
     f = open(path, 'w')
     configs.write(f)
