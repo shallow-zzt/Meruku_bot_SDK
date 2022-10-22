@@ -1,7 +1,7 @@
 # Meruku_bot_SDK
 一个基于go_cqhttp的正向websocket通信的bot python开发框架
 
-名称灵感来自于《[梅露可物语](https://mercstoria.happyelements.co.jp/)》的瓶中女孩[梅露可](https://merc-storia-english.fandom.com/wiki/Merc)
+项目名称的灵感来自于《[梅露可物语](https://mercstoria.happyelements.co.jp/)》的瓶中女孩[梅露可](https://merc-storia-english.fandom.com/wiki/Merc)
 
 以符合原铃心开发者进行开发为目的的SDK
 
