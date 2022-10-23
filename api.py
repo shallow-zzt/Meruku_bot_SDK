@@ -167,7 +167,8 @@ def cq_pic(file,statical=True):
                 os.mkdir('cache')
             except:
                 pass
-            seed_path='cache/'+str(random.random()*100000000000)+'.png'
+            ext=file.split('.')
+            seed_path='cache/'+str(random.random())+'.'+ext[-1]
             shutil.copy(file,seed_path)
             return '[CQ:image,file=http://0.0.0.0:9999/' + seed_path + ']'
 #清理动态缓存
