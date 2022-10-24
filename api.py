@@ -210,6 +210,13 @@ def dl_image(url,path):
         f.write(r.content)
     return
     
+#获取图链
+def get_image_url(text):
+    sep_text=text.split('url=')
+    text2=text[1].replace(']','')
+    return text2
+
+
 ###############################################
 
 
