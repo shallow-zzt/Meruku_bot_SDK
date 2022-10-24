@@ -223,25 +223,37 @@ def get_image_url(text):
 ###############################################
 
 #取中间
-def get_center_text(raw_text,left,right,num = 1):
-    result = re.search(str(left)+'(.*)'+str(right), raw_text)
-    return result.group(num)
+def get_center_text(raw_text,left,right):
+    try:
+        strs = raw_text
+        re2 = re.compile(r''+left+'(.*?)'+right)
+        result = re2.findall(strs)
+        return result
+
+    except:
+        return '-1'
     
 #读配置    
-def read_config(path,key1,key2,default = 0):
+def read_config(path,key1,key2,default = 0,enc=False):
     configs = configparser.ConfigParser()
     try:
-        configs.read(path)
+        if enc:
+            configs.read(path,encoding='utf-8')
+        else:
+            configs.read(path)        
         result=configs.get(key1,key2)
     except:
         result=default
     return result
 
 #写配置
-def write_config(path,key1,key2,value):
+def write_config(path,key1,key2,value,enc=False):
     configs = configparser.ConfigParser()
     try:
-        configs.read(path)
+        if enc:
+            configs.read(path,encoding='utf-8')
+        else:
+            configs.read(path)        
     except:
         pass
     try:
@@ -256,8 +268,11 @@ def write_config(path,key1,key2,value):
     
 #访问网页
 def url_content(url,headers=None):
-    r=requests.get(url,headers=headers)
-    return r.text
+    try:
+        r=requests.get(url,headers=headers)
+        return r.text
+    except:
+        return '-1'
     
 
 ###############################################
