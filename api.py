@@ -233,15 +233,20 @@ def get_center_text(raw_text,left,right):
     except:
         return '-1'
     
-#读配置    
-def read_config(path,key1,key2,default = 0,enc=False):
+#读配置      
+def read_config(path,key1 = '#null#',key2 = '#null#',default = 0,enc=False):
     configs = configparser.ConfigParser()
     try:
         if enc:
             configs.read(path,encoding='utf-8')
         else:
-            configs.read(path)        
-        result=configs.get(key1,key2)
+            configs.read(path)
+        if key1 == '#null#' and key2 == '#null#':
+            result=configs.sections()
+        elif key1 != '#null#' and key2 == '#null#':
+            result=configs.options(key1)
+        else:
+            result=configs.get(key1,key2)
     except:
         result=default
     return result
