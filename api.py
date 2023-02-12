@@ -202,6 +202,14 @@ def cq_reply(data):
     msg_id=str(data['message_id'])
     return '[CQ:reply,id=' + msg_id + ']'
 
+#创建目录
+def make_dir(path):
+    try:
+        os.mkdir(path)
+    except:
+        pass
+    return
+
 #下载图片到指定目录
 def dl_image(url,path):
     r = requests.get(url)
